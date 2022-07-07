@@ -6,4 +6,4 @@
 - [x] Lab 2: Primitives & Objects
 - [x] Lab 3: Conditionals, Loops, Arrays
 - [x] Lab 4: Debugging and Testing
-- [ ] 
+- [x] Lab 5: Naked Linked Lists
