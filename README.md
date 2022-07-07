@@ -7,3 +7,4 @@
 - [x] Lab 3: Conditionals, Loops, Arrays
 - [x] Lab 4: Debugging and Testing
 - [x] Lab 5: Naked Linked Lists
+- [x] Lab 6: Linked List Enhancements
