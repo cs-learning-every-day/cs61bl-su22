@@ -5,3 +5,5 @@
 - [x] Lab 1: Java & Git
 - [x] Lab 2: Primitives & Objects
 - [x] Lab 3: Conditionals, Loops, Arrays
+- [x] Lab 4: Debugging and Testing
+- [ ] 
