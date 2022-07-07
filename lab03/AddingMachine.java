@@ -13,12 +13,14 @@ public class AddingMachine {
         int[] listOfInputs = new int[MAXIMUM_NUMBER_OF_INPUTS];
         int index = 0;
 
-        // TODO Add code anywhere below to complete AddingMachine
 		while (true) {
 			input = scanner.nextInt();
 			if (input == 0) {
 				if (isPreviousZero) {
 					System.out.println("total " + total);
+					for (int i = 0; i < index; i++) {
+						System.out.println(listOfInputs[i]);
+					}
 					return;
 				} else {
 					System.out.println("subtotal " + subtotal);
@@ -29,6 +31,7 @@ public class AddingMachine {
 			}
 			subtotal += input;
 			if (input != 0) {
+				listOfInputs[index++] = input;
 				isPreviousZero = false;
 			}
 
