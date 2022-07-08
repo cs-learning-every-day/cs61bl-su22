@@ -8,3 +8,5 @@
 - [x] Lab 4: Debugging and Testing
 - [x] Lab 5: Naked Linked Lists
 - [x] Lab 6: Linked List Enhancements
+- [x] Lab 7: ADTs, Interfaces, and Collections
+- [ ] Lab 8: Persistence and Gitlet
