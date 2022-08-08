@@ -10,3 +10,4 @@
 - [x] Lab 6: Linked List Enhancements
 - [x] Lab 7: ADTs, Interfaces, and Collections
 - [x] Lab 8: Persistence and Gitlet
+- [x] Lab 9: Comparison, Iteration, and Exceptions
