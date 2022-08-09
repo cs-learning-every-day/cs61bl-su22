@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertEquals;
+
 public class BinaryTree<T> {
 
     TreeNode<T> root;
@@ -16,8 +18,12 @@ public class BinaryTree<T> {
 
     /* Returns the height of the tree. */
     public int height() {
-        // TODO: YOUR CODE HERE
-        return 0;
+        return heightHelper(root);
+    }
+
+    private int heightHelper(TreeNode<T> node) {
+        if (node == null) return 0;
+        return 1 + Math.max(heightHelper(node.left), heightHelper(node.right));
     }
 
     /* Returns true if the tree's left and right children are the same height
@@ -30,7 +36,20 @@ public class BinaryTree<T> {
     /* Returns a BinaryTree representing the Fibonacci calculation for N. */
     public static BinaryTree<Integer> fibTree(int N) {
         BinaryTree<Integer> result = new BinaryTree<Integer>();
-        return null;
+        if (N < 2) {
+            result.root = new TreeNode<>(N);
+        } else {
+            result.root = fibTreeHelper(new TreeNode<>(1), new TreeNode<>(0), N);
+        }
+        return result;
+    }
+
+    private static TreeNode<Integer> fibTreeHelper(TreeNode<Integer> left, TreeNode<Integer> right, int n) {
+        var tmp = new TreeNode<>(left.item + right.item, left, right);
+        if (n == 2) {
+            return tmp;
+        }
+        return fibTreeHelper(tmp, left, n - 1);
     }
 
     /* Print the values in the tree in preorder: root value first, then values
@@ -74,22 +93,18 @@ public class BinaryTree<T> {
 
     /* Fills this BinaryTree with values a, b, and c, d, e, f. DO NOT MODIFY. */
     public void sampleTree2() {
-        root = new TreeNode("a",
-                  new TreeNode("b", new TreeNode("d", new TreeNode("e"),
-                  new TreeNode("f")), null), new TreeNode("c"));
+        root = new TreeNode("a", new TreeNode("b", new TreeNode("d", new TreeNode("e"), new TreeNode("f")), null), new TreeNode("c"));
     }
 
     /* Fills this BinaryTree with the values a, b, c, d, e, f. DO NOT MODIFY. */
     public void sampleTree3() {
-        root = new TreeNode("a", new TreeNode("b"), new TreeNode("c",
-               new TreeNode("d", new TreeNode("e"), new TreeNode("f")), null));
+        root = new TreeNode("a", new TreeNode("b"), new TreeNode("c", new TreeNode("d", new TreeNode("e"), new TreeNode("f")), null));
     }
 
     /* Fills this BinaryTree with the same leaf TreeNode. DO NOT MODIFY. */
     public void sampleTree4() {
         TreeNode leafNode = new TreeNode("c");
-        root = new TreeNode("a", new TreeNode("b", leafNode, leafNode),
-                                 new TreeNode("d", leafNode, leafNode));
+        root = new TreeNode("a", new TreeNode("b", leafNode, leafNode), new TreeNode("d", leafNode, leafNode));
     }
 
     /* Creates two BinaryTrees and prints them out in inorder. */
@@ -99,12 +114,23 @@ public class BinaryTree<T> {
         print(t, "the empty tree");
         t.sampleTree1();
         print(t, "sample tree 1");
+        assertEquals(2, t.height());
         t.sampleTree2();
         print(t, "sample tree 2");
+        assertEquals(4, t.height());
         t.sampleTree3();
         print(t, "sample tree 3");
+        assertEquals(4, t.height());
         t.sampleTree4();
         print(t, "sample tree 4");
+        assertEquals(3, t.height());
+
+        var fib3 = BinaryTree.fibTree(3);
+        print(fib3, "fib3 tree");
+        var fib5 = BinaryTree.fibTree(5);
+        print(fib5, "fib5 tree");
+        var fib20 = BinaryTree.fibTree(20);
+        print(fib20, "fib20 tree");
     }
 
     /* Note: this class is public in this lab for testing purposes. However,

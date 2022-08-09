@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import static org.junit.Assert.assertEquals;
+
 /* An AmoebaFamily is a tree, where nodes are Amoebas, each of which can have
    any number of children. */
 public class AmoebaFamily implements Iterable<AmoebaFamily.Amoeba> {
@@ -32,7 +34,9 @@ public class AmoebaFamily implements Iterable<AmoebaFamily.Amoeba> {
 
     /* Returns the longest name in this AmoebaFamily. */
     public String longestName() {
-        // TODO: YOUR CODE HERE
+        if (root != null) {
+            return root.longestNameHelper();
+        }
         return "";
     }
 
@@ -57,6 +61,8 @@ public class AmoebaFamily implements Iterable<AmoebaFamily.Amoeba> {
         family.addChild("Marge", "Bill");
         family.addChild("Marge", "Hilary");
         System.out.println("Here's the family!");
+
+        assertEquals("Amos McCoy", family.longestName());
     }
 
     /* An Amoeba is a node of an AmoebaFamily. */
@@ -102,9 +108,20 @@ public class AmoebaFamily implements Iterable<AmoebaFamily.Amoeba> {
             int maxLengthSeen = name.length();
             for (Amoeba a : children) {
                 maxLengthSeen = Math.max(maxLengthSeen,
-                                         a.longestNameLengthHelper());
+                        a.longestNameLengthHelper());
             }
             return maxLengthSeen;
+        }
+
+        public String longestNameHelper() {
+            String res = name;
+            for (var c : children) {
+                String tmp = c.longestNameHelper();
+                if (res.length() < tmp.length()) {
+                    res = tmp;
+                }
+            }
+            return res;
         }
 
         // POSSIBLE HELPER FUNCTIONS HERE
