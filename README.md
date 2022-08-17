@@ -13,7 +13,7 @@
 - [x] Lab 9: Comparison, Iteration, and Exceptions
 - [x] Lab 10: Runtime Analysis
 - [x] Lab 13: Trees and Traversals
-- [ ] Lab 14: Binary Search Trees
+- [x] Lab 14: Binary Search Trees
 - [ ] Lab 15: Balanced Search Trees
 - [ ] Lab 16: Tries
 - [ ] Lab 18: Hash Tables

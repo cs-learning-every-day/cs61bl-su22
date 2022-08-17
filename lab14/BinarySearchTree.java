@@ -12,19 +12,52 @@ public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T> {
 
     /* Returns true if the BST contains the given KEY. */
     public boolean contains(T key) {
-        // TODO: YOUR CODE HERE
-        return false;
+        // YOUR CODE HERE
+        return contains(root, key);
     }
+
+    private boolean contains(TreeNode node, T key) {
+        // YOUR CODE HERE
+
+        if (node == null) {
+            return false;
+        }
+        int cmp = node.item.compareTo(key);
+        if (cmp == 0) {
+            return true;
+        } else if (cmp < 0) {
+            return contains(node.right, key);
+        } else {
+            return contains(node.left, key);
+        }
+    }
+
 
     /* Adds a node for KEY iff KEY isn't in the BST already. */
     public void add(T key) {
-        // TODO: YOUR CODE HERE
+        // YOUR CODE HERE
+        root = add(root, key);
     }
 
-    /* Deletes a node from the BST. 
-     * Even though you do not have to implement delete, you 
+    private TreeNode add(TreeNode node, T key) {
+        if (node == null) {
+            return new TreeNode(key);
+        }
+
+        int cmp = node.item.compareTo(key);
+
+        if (cmp < 0) {
+            node.right = add(node.right, key);
+        } else if (cmp > 0) {
+            node.left = add(node.left, key);
+        }
+        return node;
+    }
+
+    /* Deletes a node from the BST.
+     * Even though you do not have to implement delete, you
      * should read through and understand the basic steps.
-    */
+     */
     public T delete(T key) {
         TreeNode parent = null;
         TreeNode curr = root;

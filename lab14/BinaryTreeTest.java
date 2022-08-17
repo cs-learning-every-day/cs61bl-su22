@@ -1,9 +1,12 @@
 import org.junit.Test;
-import static org.junit.Assert.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.Assert.assertEquals;
+
 public class BinaryTreeTest {
+
     @Test
     public void treeFormatTest() {
         BinarySearchTree<String> x = new BinarySearchTree<String>();
@@ -17,7 +20,7 @@ public class BinaryTreeTest {
         System.setOut(new PrintStream(outContent));
         BinaryTree.print(x, "x");
         System.setOut(oldOut);
-        assertEquals("x in preorder\nC A B E D \nx in inorder\nA B C D E \n\n".trim(),
+        assertEquals("x in preorder\r\nC A B E D \r\nx in inorder\r\nA B C D E \r\n\r\n".trim(),
                      outContent.toString().trim());
     }
 }
